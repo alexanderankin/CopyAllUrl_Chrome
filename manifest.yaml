@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://json.schemastore.org/chrome-manifest
+action:
+  default_icon:
+    16: "img/umbrella_19.png"
+    24: "img/umbrella_19.png"
+    32: "img/umbrella_19.png"
+  default_title: "Copy URLs to clipboard"
+  default_popup: "popup.html"
+description: "Copy tabs URL to clipboard (formats : text, HTML, JSON or custom). Paste to open multiple URL at one go."
+icons:
+  128: "img/umbrella_128.png"
+background:
+  scripts:
+    - "vendor/jquery-1.7.2_min.js"
+    - "vendor/encoder.js"
+    - "background.js"
+commands:
+  copy:
+    suggested_key:
+      default: "Alt+C"
+    description: "Copy"
+  paste:
+    suggested_key:
+      default: "Alt+V"
+    description: "Paste"
+name: "Copy All Urls"
+options_page: "options.html"
+permissions:
+  - "tabs"
+  - "http://*/*"
+  - "https://*/*"
+  - "management"
+  - "clipboardRead"
+  - "clipboardWrite"
+  - "notifications"
+content_security_policy:
+  extension_pages: script-src 'self' https://ssl.google-analytics.com; object-src 'self'
+  sandbox: script-src 'self' https://ssl.google-analytics.com; object-src 'self'
+version: "3.10"
+manifest_version: 3
