@@ -40,10 +40,14 @@ In order to publish beyond a draft the following was required as well:
 * A justification for remote code use is required. This can be entered on the Privacy practices tab.
 * A justification for tabs is required. This can be entered on the Privacy practices tab.
 * At least one screenshot or video is required.
+  * see screenshots in `docs/screenshots/`
 * The single purpose description is required. This can be entered on the Privacy practices tab.
+  * `the purpose of this extension (https://github.com/alexanderankin/CopyAllUrl_Chrome) is to republish the upstream extension but with manifest v3 https://github.com/vincepare/CopyAllUrl_Chrome` 
 * To publish your item, you must certify that your data usage complies with our Developer Program Policies. You can certify this on the Privacy practices tab of the item edit page.
 * You must provide a contact email before you can publish any item. Enter your contact email on the Account tab.
+  * go to the dev console
 * You must verify your contact email before you can publish any item. Begin the verification process on the Account tab.
+  * go to the dev console
 
 justification was provided as given in `justifications.json`.
 there is even a script to automatically populate the form, see `Makefile`.

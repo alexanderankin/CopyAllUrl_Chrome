@@ -18,7 +18,7 @@ build/justifications-script.js: justifications.json
 	@cat justifications.json | jq -c | tr -d '\n' >> $@
 	@printf ";" >> $@
 	@echo >> $@
-	@echo "Array.from(document.getElementsByTagName('span')).filter(e => e.children.length === 0 && e.innerText.endsWith(" justification")).map(e => ({ e, innerText: e.innerText, textarea: e.parentNode.closest('label').querySelector('textarea') })).forEach(e => e.textarea.value = justifications[e.innerText.replace(' justification', '')]);" >> $@
+	@echo "Array.from(document.getElementsByTagName('span')).filter(e => e.children.length === 0 && e.innerText.endsWith(' justification')).map(e => ({ e, innerText: e.innerText, textarea: e.parentNode.closest('label').querySelector('textarea') })).forEach(e => e.textarea.value = justifications[e.innerText.replace(' justification', '')]);" >> $@
 	@echo >> $@
 
 
