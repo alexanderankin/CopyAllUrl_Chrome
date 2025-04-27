@@ -23,7 +23,7 @@ commands:
     suggested_key:
       default: "Alt+V"
     description: "Paste"
-name: "Copy All Urls"
+name: "Copy All Urls (Manifest Update Fork)"
 options_page: "options.html"
 permissions:
   - "tabs"
