@@ -103,8 +103,8 @@ Action = {
 			chrome.runtime.sendMessage({type: "copy", copied_url: tabs.length});
 			
 			// Tracking event
-			_gaq.push(['_setCustomVar', 3, 'ActionMeta', opt.gaEvent.actionMeta]);
-			_gaq.push(['_trackEvent', 'Action', opt.gaEvent.action, opt.gaEvent.label, tabs.length]);
+			// _gaq.push(['_setCustomVar', 3, 'ActionMeta', opt.gaEvent.actionMeta]);
+			// _gaq.push(['_trackEvent', 'Action', opt.gaEvent.action, opt.gaEvent.label, tabs.length]);
 		});
 	},
 	
@@ -155,8 +155,8 @@ Action = {
 		chrome.runtime.sendMessage({type: "paste"});
 		
 		// Tracking event
-		_gaq.push(['_setCustomVar', 3, 'ActionMeta', opt.gaEvent.actionMeta]);
-		_gaq.push(['_trackEvent', 'Action', opt.gaEvent.action, opt.gaEvent.label, urlList.length]);
+		// _gaq.push(['_setCustomVar', 3, 'ActionMeta', opt.gaEvent.actionMeta]);
+		// _gaq.push(['_trackEvent', 'Action', opt.gaEvent.action, opt.gaEvent.label, urlList.length]);
 	}
 };
 
@@ -306,7 +306,7 @@ chrome.runtime.onInstalled.addListener(function(details){
 	UpdateManager.setBadge();
 	
 	// Tracking event
-	_gaq.push(['_trackEvent', 'Lifecycle', 'Update', details.previousVersion]);
+	// _gaq.push(['_trackEvent', 'Lifecycle', 'Update', details.previousVersion]);
 	
 	// Affichage de la notification
 	chrome.notifications.create("cpau_update_notification", {
@@ -317,91 +317,91 @@ chrome.runtime.onInstalled.addListener(function(details){
 	}, function(notificationId){});
 	chrome.notifications.onClicked.addListener(function(notificationId){
 		if (notificationId == "cpau_update_notification") {
-			_gaq.push(['_trackEvent', 'Internal link', 'Notification', 'http://finalclap.github.io/CopyAllUrl_Chrome/']);
-			chrome.tabs.create({url: 'http://finalclap.github.io/CopyAllUrl_Chrome/'});
+			// _gaq.push(['_trackEvent', 'Internal link', 'Notification', 'http://finalclap.github.io/CopyAllUrl_Chrome/']);
+			chrome.tabs.create({url: 'https://finalclap.github.io/CopyAllUrl_Chrome/'});
 		}
 	});
 });
 
-/**
-* Fonctions utilitaires web analytics
-*/
-AnalyticsHelper = {
-	/** Fonction qui récupère la clé de l'extension, pour récupérer des infos dessus (comme sa version) */
-	getChromeExtensionKey: function(){
-		var url = chrome.extension.getURL('stop');
-		var matches = chrome.extension.getURL('stop').match(new RegExp("[a-z0-9_-]+://([a-z0-9_-]+)/stop","i"));
-		return (matches[1] == undefined) ? false : matches[1];
-	},
-	
-	/** Retourne une chaîne de caractère (objet json serialisé) qui contient des informations sur la configuration du plugin */
-	getShortSettings: function(settings){
-		if (settings == undefined) {
-			settings = localStorage;
-		}
-		
-		var shortSettings = {
-			fm: localStorage['format'] ? localStorage['format'] : 'text',
-			an: localStorage['anchor'] ? localStorage['anchor'] : 'url',
-			da: localStorage['default_action'] ? localStorage['default_action'] : "menu",
-			mm: localStorage['mime'] ? localStorage['mime'] : 'plaintext',
-			hl: localStorage['highlighted_tab_only'] == "true" ? 1 : 0,
-			ip: localStorage['intelligent_paste'] == "true" ? 1 : 0,
-			ww: localStorage['walk_all_windows'] == "true" ? 1 : 0
-		};
-		
-		return AnalyticsHelper.serialize(shortSettings);
-	},
-	
-	/** Retourne un extrait de configuration pour le tracking des events de catégorie Action */
-	getActionMeta: function(action){
-		switch(action){
-			case "copy":
-				var shortSettings = {
-					fm: localStorage['format'] ? localStorage['format'] : 'text',
-					an: localStorage['anchor'] ? localStorage['anchor'] : 'url',
-					mm: localStorage['mime'] ? localStorage['mime'] : 'plaintext',
-					hl: localStorage['highlighted_tab_only'] == "true" ? 1 : 0,
-					ww: localStorage['walk_all_windows'] == "true" ? 1 : 0
-				};
-				break;
-			case "paste":
-				var shortSettings = {
-					ip: localStorage['intelligent_paste'] == "true" ? 1 : 0
-				};
-				break;
-		}
-		return AnalyticsHelper.serialize(shortSettings);
-	},
-	
-	/** Serialise un objet pour transmission à ga. data doit être un tableau (array ou object) */
-	serialize: function(data){
-		var chunks = [];
-		for (var i in data) {
-			chunks.push(i+":"+data[i]);
-		}
-		var serialized = chunks.join(",");
-		return serialized;
-	},
-	
-	/** Charge google analytics (ga.js) dans le document passé en paramètre */
-	gaLoad: function(doc){
-		var ga = doc.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = 'https://ssl.google-analytics.com/ga.js';
-		var s = doc.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	},
-	
-	/** Identifiant du compte google analytics */
-	gaAccount: 'UA-30512078-5'
-};
+// /**
+// * Fonctions utilitaires web analytics
+// */
+// AnalyticsHelper = {
+// 	/** Fonction qui récupère la clé de l'extension, pour récupérer des infos dessus (comme sa version) */
+// 	getChromeExtensionKey: function(){
+// 		var url = chrome.extension.getURL('stop');
+// 		var matches = chrome.extension.getURL('stop').match(new RegExp("[a-z0-9_-]+://([a-z0-9_-]+)/stop","i"));
+// 		return (matches[1] == undefined) ? false : matches[1];
+// 	},
+//
+// 	/** Retourne une chaîne de caractère (objet json serialisé) qui contient des informations sur la configuration du plugin */
+// 	getShortSettings: function(settings){
+// 		if (settings == undefined) {
+// 			settings = localStorage;
+// 		}
+//
+// 		var shortSettings = {
+// 			fm: localStorage['format'] ? localStorage['format'] : 'text',
+// 			an: localStorage['anchor'] ? localStorage['anchor'] : 'url',
+// 			da: localStorage['default_action'] ? localStorage['default_action'] : "menu",
+// 			mm: localStorage['mime'] ? localStorage['mime'] : 'plaintext',
+// 			hl: localStorage['highlighted_tab_only'] == "true" ? 1 : 0,
+// 			ip: localStorage['intelligent_paste'] == "true" ? 1 : 0,
+// 			ww: localStorage['walk_all_windows'] == "true" ? 1 : 0
+// 		};
+//
+// 		return AnalyticsHelper.serialize(shortSettings);
+// 	},
+//
+// 	/** Retourne un extrait de configuration pour le tracking des events de catégorie Action */
+// 	getActionMeta: function(action){
+// 		switch(action){
+// 			case "copy":
+// 				var shortSettings = {
+// 					fm: localStorage['format'] ? localStorage['format'] : 'text',
+// 					an: localStorage['anchor'] ? localStorage['anchor'] : 'url',
+// 					mm: localStorage['mime'] ? localStorage['mime'] : 'plaintext',
+// 					hl: localStorage['highlighted_tab_only'] == "true" ? 1 : 0,
+// 					ww: localStorage['walk_all_windows'] == "true" ? 1 : 0
+// 				};
+// 				break;
+// 			case "paste":
+// 				var shortSettings = {
+// 					ip: localStorage['intelligent_paste'] == "true" ? 1 : 0
+// 				};
+// 				break;
+// 		}
+// 		return AnalyticsHelper.serialize(shortSettings);
+// 	},
+//
+// 	/** Serialise un objet pour transmission à ga. data doit être un tableau (array ou object) */
+// 	serialize: function(data){
+// 		var chunks = [];
+// 		for (var i in data) {
+// 			chunks.push(i+":"+data[i]);
+// 		}
+// 		var serialized = chunks.join(",");
+// 		return serialized;
+// 	},
+//
+// 	/** Charge google analytics (ga.js) dans le document passé en paramètre */
+// 	gaLoad: function(doc){
+// 		var ga = doc.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+// 		ga.src = 'https://ssl.google-analytics.com/ga.js';
+// 		var s = doc.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+// 	},
+//
+// 	/** Identifiant du compte google analytics */
+// 	gaAccount: 'UA-30512078-5'
+// };
 
 // Chargement google analytics
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', AnalyticsHelper.gaAccount]);
-_gaq.push(['_setCustomVar', 1, 'Version', chrome.runtime.getManifest().version, 2]);
-_gaq.push(['_setCustomVar', 2, 'Settings', AnalyticsHelper.getShortSettings(), 2]);
-_gaq.push(['_trackPageview']);
-AnalyticsHelper.gaLoad(document);
+// var _gaq = _gaq || [];
+// _gaq.push(['_setAccount', AnalyticsHelper.gaAccount]);
+// _gaq.push(['_setCustomVar', 1, 'Version', chrome.runtime.getManifest().version, 2]);
+// _gaq.push(['_setCustomVar', 2, 'Settings', AnalyticsHelper.getShortSettings(), 2]);
+// _gaq.push(['_trackPageview']);
+// AnalyticsHelper.gaLoad(document);
 
 jQuery(function($){
 	// Au chargement de la page, on créé une textarea qui va servir à lire et à écrire dans le presse papier

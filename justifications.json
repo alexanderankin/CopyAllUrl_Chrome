@@ -1,0 +1,7 @@
+{
+	"tabs": "the justification is that the purpose of the extension is to manage tabs - mainly create and read the urls from them",
+	"management": "the justification is that the purpose of the extension is to manage tabs - mainly create and read the urls from them",
+	"clipboardRead": "the justification is that the purpose of the extension is to manage tabs via clipboard - it allows the user to use the clipboard to open tabs from a user-provided list (via the clipboard)",
+	"clipboardWrite": "the justification is that the purpose of the extension is to manage tabs via clipboard - it allows the user to copy a list of their opened tab urls to the clipboard",
+	"notifications": "the justifications for the notifications permission is to provide a nice UI once the clipboard copying is done"
+}

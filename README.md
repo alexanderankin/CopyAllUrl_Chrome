@@ -30,3 +30,20 @@ to publish on the web store you need to read these pages/perform these steps:
 * https://chrome.google.com/webstore/devconsole
 	* `make`
     * upload the resulting zip file
+
+In order to publish beyond a draft the following was required as well:
+
+* A justification for clipboardRead is required. This can be entered on the Privacy practices tab.
+* A justification for clipboardWrite is required. This can be entered on the Privacy practices tab.
+* A justification for management is required. This can be entered on the Privacy practices tab.
+* A justification for notifications is required. This can be entered on the Privacy practices tab.
+* A justification for remote code use is required. This can be entered on the Privacy practices tab.
+* A justification for tabs is required. This can be entered on the Privacy practices tab.
+* At least one screenshot or video is required.
+* The single purpose description is required. This can be entered on the Privacy practices tab.
+* To publish your item, you must certify that your data usage complies with our Developer Program Policies. You can certify this on the Privacy practices tab of the item edit page.
+* You must provide a contact email before you can publish any item. Enter your contact email on the Account tab.
+* You must verify your contact email before you can publish any item. Begin the verification process on the Account tab.
+
+justification was provided as given in `justifications.json`.
+there is even a script to automatically populate the form, see `Makefile`.

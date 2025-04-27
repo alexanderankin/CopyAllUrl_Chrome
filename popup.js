@@ -21,10 +21,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 });
 
 // Chargement google analytics
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', bkg.AnalyticsHelper.gaAccount]);
-_gaq.push(['_trackPageview']);
-bkg.AnalyticsHelper.gaLoad(document);
+// var _gaq = _gaq || [];
+// _gaq.push(['_setAccount', bkg.AnalyticsHelper.gaAccount]);
+// _gaq.push(['_trackPageview']);
+// bkg.AnalyticsHelper.gaLoad(document);
 
 /**
 * Gestion des boutons de la popup
@@ -52,11 +52,11 @@ jQuery(function($){
 		bkg.Action.paste({gaEvent: gaEvent});
 	});
 	$('#actionOption').click(function(e){
-		_gaq.push(['_trackEvent', 'Internal link', 'Option', 'options.html']);
+		// _gaq.push(['_trackEvent', 'Internal link', 'Option', 'options.html']);
 		chrome.tabs.create({url: 'options.html'});
 	});
 	$('#contribute a').click(function(e){
-		_gaq.push(['_trackEvent', 'Internal link', 'Contribute', 'options.html#donate']);
+		// _gaq.push(['_trackEvent', 'Internal link', 'Contribute', 'options.html#donate']);
 		chrome.tabs.create({url: 'options.html#donate'});
 	});
 	
@@ -82,7 +82,7 @@ jQuery(function($){
 	if (bkg.UpdateManager.recentUpdate()) {
 		var content = "New version recently installed. Check the <a href=\"http://finalclap.github.io/CopyAllUrl_Chrome/\">changelog</a>.";
 		$('#recently-updated').html(content).show().find('a').click(function(e){
-			_gaq.push(['_trackEvent', 'External link', 'changelog recent update', $(this).attr('href')]);
+			// _gaq.push(['_trackEvent', 'External link', 'changelog recent update', $(this).attr('href')]);
 			chrome.tabs.create({url: $(this).attr('href')});
 		});
 	}

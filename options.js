@@ -2,31 +2,12 @@
 bkg = chrome.extension.getBackgroundPage();
 
 // Chargement google analytics
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', bkg.AnalyticsHelper.gaAccount]);
-_gaq.push(['_trackPageview']);
-bkg.AnalyticsHelper.gaLoad(document);
+// var _gaq = _gaq || [];
+// _gaq.push(['_setAccount', bkg.AnalyticsHelper.gaAccount]);
+// _gaq.push(['_trackPageview']);
+// bkg.AnalyticsHelper.gaLoad(document);
 
 jQuery(document).ready(function($){
-	// Définition du bouton email
-	var email = (function(){
-		coded = "49vVNJ@y36Ws4sWA.4VN"
-		key = "bP3Oc7k8xzM2dnm0oWZplqEw4SKf1UDBr6NeVCTAshItiLYyjQu5vXHJFRGag9"
-		shift = coded.length
-		output = ""
-		for (i = 0; i < coded.length; i++) {
-			if (key.indexOf(coded.charAt(i)) == -1) {
-				ltr = coded.charAt(i)
-				output += (ltr)
-			} else {
-				ltr = (key.indexOf(coded.charAt(i)) - shift + key.length) % key.length
-				output += (key.charAt(ltr))
-			}
-		}
-		return output;
-	})();
-	$('#contact-link').attr('href', 'mailto:'+email).find('span').html(email);
-	
 	// Affichage version
 	$('#cpau_version_label').html(chrome.runtime.getManifest().version);
 
@@ -83,7 +64,7 @@ jQuery(document).ready(function($){
 	
 	// Reset
 	$('#reset_settings').click(function(e){
-		_gaq.push(['_trackEvent', 'Internal link', 'Reset settings']);
+		// _gaq.push(['_trackEvent', 'Internal link', 'Reset settings']);
 		OptionFormManager.optionsReset();
 	});
 	
@@ -102,7 +83,7 @@ jQuery(document).ready(function($){
 			return;
 		}
 		var gaAction = $(this).data('galinkid') || $(this).attr('id') || $(this).text() || 'Unset';
-		_gaq.push(['_trackEvent', 'Internal link', gaAction, href]);
+		// _gaq.push(['_trackEvent', 'Internal link', gaAction, href]);
 		if ($(this).hasClass('on-new-tab')) {
 			chrome.tabs.create({url: href});
 		} else {
@@ -119,26 +100,24 @@ jQuery(document).ready(function($){
 	}
 	
 	// Tracking events
+	/*
 	$('.hero-unit .paypal-donate form').click(function(e){
 		e.stopImmediatePropagation();
-		_gaq.push(['_trackEvent', 'Donate', 'Paypal', 'Header']);
+		// _gaq.push(['_trackEvent', 'Donate', 'Paypal', 'Header']);
 	});
 	$('#donate-paypal form').click(function(e){
 		e.stopImmediatePropagation();
-		_gaq.push(['_trackEvent', 'Donate', 'Paypal', 'About']);
+		// _gaq.push(['_trackEvent', 'Donate', 'Paypal', 'About']);
 	});
 	$('#donate-flattr a').click(function(e){
 		e.stopImmediatePropagation();
-		_gaq.push(['_trackEvent', 'Donate', 'Flattr', 'About']);
+		// _gaq.push(['_trackEvent', 'Donate', 'Flattr', 'About']);
 	});
 	$('#donate-bitcoin img').click(function(e){
 		e.stopImmediatePropagation();
-		_gaq.push(['_trackEvent', 'Donate', 'Bitcoin', 'About']);
+		// _gaq.push(['_trackEvent', 'Donate', 'Bitcoin', 'About']);
 	});
-	$('#contact-link').click(function(e){
-		e.stopImmediatePropagation();
-		_gaq.push(['_trackEvent', 'Internal link', 'Email']);
-	});
+	*/
 	$('a').click(function(e){
 		var href = $(this).attr('href');
 		try {
@@ -150,7 +129,7 @@ jQuery(document).ready(function($){
 		}
 		e.stopImmediatePropagation();
 		var gaAction = $(this).data('galinkid') || $(this).attr('id') || $(this).text() || 'Unset';
-		_gaq.push(['_trackEvent', 'External link', gaAction, href]);
+		// _gaq.push(['_trackEvent', 'External link', gaAction, href]);
 	});
 });
 
