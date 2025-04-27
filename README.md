@@ -19,7 +19,7 @@ this fork updates the manifest to v3 so that it can be used on the extensions st
 
 ## Contributing
 
-see https://github.com/alexanderankin/CopyAllUrl_Chrome.git for more details
+see https://github.com/alexanderankin/CopyAllUrl_Chrome for more details
 
 ## publishing
 
