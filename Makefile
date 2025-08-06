@@ -8,9 +8,13 @@ yaml2json:
 manifest.json: manifest.yaml yaml2json
 	cat manifest.yaml | yaml2json > $@
 
-build/extension.zip: manifest.json
+popup := $(wildcard popup.*)
+img := $(wildcard img/.*)
+
+build/extension.zip: $(popup) $(img) manifest.json
 	@mkdir -p build
-	zip -q -r $@ img/ vendor/ *.css *.js *.html manifest.json
+	@rm -f $@
+	zip -q -r $@ popup.* img/ manifest.json
 
 build/justifications-script.js: justifications.json
 	@mkdir -p build
@@ -25,5 +29,4 @@ build/justifications-script.js: justifications.json
 .PHONY: clean
 clean:
 	rm -f manifest.json
-	rm -f build/extension.zip
-	rm -f build/justifications-script.js
+	rm -rf build/
