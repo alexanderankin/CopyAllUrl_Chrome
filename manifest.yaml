@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/chrome-manifest
 name: "Copy All Urls (Manifest Update Fork)"
-version: "3.10"
+version: "3.11"
 manifest_version: 3
 description: "Copy tabs URL to clipboard (formats : text, HTML, JSON or custom). Paste to open multiple URL at one go."
 permissions:

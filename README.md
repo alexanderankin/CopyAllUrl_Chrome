@@ -2,11 +2,7 @@
 
 this is a rewrite. it works. just enable developer mode and load unpacked! [chrome://extensions](chrome://extensions)
 
-
-
 # old readme contents
-
-this version is a 
 
 CopyAllURL is Google Chrome extension to copy all opened tabs URL to clipboard, and to open multiple URL in the clipboard (paste).
 
